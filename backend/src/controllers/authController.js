@@ -105,7 +105,6 @@ export const verifyCodeAndRegister = async (req, res) => {
     // Generar token
     const token = generateToken(user._id);
 
-
     res.status(201).json({
       message: 'Usuario registrado exitosamente',
       token,
@@ -210,7 +209,7 @@ export const requestPasswordReset = async (req, res) => {
 
     res.json({
       message: 'Si el correo existe, se ha enviado un código de verificación',
-    });
+    }); 
   } catch (error) {
     console.error('Error en requestPasswordReset:', error);
     res.status(500).json({ message: 'Error al solicitar recuperación de contraseña' });

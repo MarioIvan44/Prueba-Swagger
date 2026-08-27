@@ -19,9 +19,15 @@ import closureDateRoutes from "./routes/closureDateRoutes.js";
 import fontRoutes from "./routes/fontRoutes.js";
 import userRoutes from "./routes/users.js";
 import swaggerUi from "swagger-ui-express"
-import swaggerDocument from "" with {type: "json"}
+import swaggerDocument from "./utils/elsalvador-Evaluacion-Swagger-1.0-unresolved.json" with {type: "json"}
 
 const app = express();
+
+app.use("/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+)
+
 
 app.use(
   cors({
@@ -58,9 +64,5 @@ app.use("/api/fonts", fontRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-app.use("/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument)
-)
 
 export default app;
